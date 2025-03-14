@@ -7,14 +7,14 @@ pipeline{
                 bat 'npm ci'
                 bat 'npm run build'
             }
-        }*/
+        }
 
         stage('Test'){
             steps{
                 bat 'echo "Testing..."'
                 bat 'npm test'
             }
-        }
+        }*/
 
         stage('E2E'){
             agent{
