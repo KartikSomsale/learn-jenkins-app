@@ -2,7 +2,7 @@ pipeline{
     agent any
     stages {
         stage('Build'){
-            setps {
+            steps {
                 bat 'echo node --version'
                 bat 'npm ci'
                 bat 'npm run build'
