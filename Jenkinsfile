@@ -20,11 +20,12 @@ pipeline{
             agent{
                 docker{
                     image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
+                    args '-u root:root'
                 }
             }
             steps{
                 bat 'npm install -g serve'
-                bat 'serve -s build'
+                bat 'node_modules/serve -s build'
                 bat 'npx playwright test'
             }
         }
