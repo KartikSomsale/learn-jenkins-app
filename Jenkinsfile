@@ -1,9 +1,11 @@
 pipe{
     agent any
     stages {
-        stage('Hello'){
+        stage('Build'){
             setps {
-                bat 'echo "Hello"'
+                bat 'echo node --version'
+                bat 'npm ci'
+                bat 'npm run build'
             }
         }
     }
