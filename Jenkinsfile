@@ -6,6 +6,11 @@ pipeline{
         NETLIFY_AUTH_TOKEN = credentials('netlify-token')
     }
     stages {
+        stage('docker'){
+            steps{
+                bat 'docker build . -t my-playwright'
+            }
+        }
         /*stage('Build'){
             steps {
                 bat 'echo node --version'
