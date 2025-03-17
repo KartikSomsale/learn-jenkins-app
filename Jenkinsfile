@@ -41,6 +41,7 @@ pipeline{
                 bat 'node_modules/.bin/netlify --version'
                 bat 'echo "Deploying into Production, Site ID : "%NETLIFY_SITE_ID%'
                 bat 'node_modules/.bin/netlify status'
+                bat 'node_modules/.bin/netlify deploy --dir=build --prod'
             }
         }
     }
