@@ -19,7 +19,7 @@ pipeline{
                 script{
                     bat 'docker pull amazon/aws-cli'
                 }
-                bat 'aws s3 ls'
+                bat 'docker run --rm amazon/aws-cli s3 ls'
             }
         }
         /*stage('Build'){
