@@ -38,7 +38,7 @@ pipeline{
             steps{
                 bat 'npm install netlify-cli'
                 bat 'node_modules/.bin/netlify --version'
-                bat 'echo "Deploying into Production, Site ID : %NETLIFY_SITE_ID%"'
+                bat 'echo "Deploying into Production, Site ID : "%NETLIFY_SITE_ID%'
             }
         }
     }
