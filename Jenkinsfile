@@ -8,7 +8,8 @@ pipeline{
     stages {
         stage('docker'){
             steps{
-                bat 'docker build . -t my-playwright'
+                // bat 'docker build . -t my-playwright'
+                bat 'echo "building image"'
             }
         }
 
@@ -16,7 +17,6 @@ pipeline{
             agent{
                 docker{
                     image 'amazon/aws-cli'
-                    args "--endpoint=''"
                 }
             }
             steps{
