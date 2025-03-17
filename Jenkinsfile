@@ -39,10 +39,22 @@ pipeline{
             steps{
                 // bat 'npm install netlify-cli'
                 bat 'echo "Small Change"'
-                bat 'node_modules/.bin/netlify --version'
+                // bat 'node_modules/.bin/netlify --version'
                 bat 'echo "Deploying into Production, Site ID : "%NETLIFY_SITE_ID%'
                 bat 'node_modules/.bin/netlify status'
                 bat 'node_modules/.bin/netlify deploy --dir=build --prod'
+            }
+        }
+        stage('Approval'){
+            steps{
+                timeout(1) {
+                    input cancel: 'No', message: 'Do you want to Deploy into Production', ok: 'Yes, I am sure.'
+                }
+            }
+        }
+        stage('Prod Deploy'){
+            steps{
+                bat 'echo "Deploying into production"'
             }
         }
     }
