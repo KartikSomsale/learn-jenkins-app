@@ -29,5 +29,12 @@ pipeline{
                 bat 'npx playwright test'
             }
         }
+
+        stage('Deploy'){
+            steps{
+                bat 'npm install netlify-cli -g'
+                bat 'netlify --version'
+            }
+        }
     }
 }
