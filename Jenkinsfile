@@ -11,6 +11,17 @@ pipeline{
                 bat 'docker build . -t my-playwright'
             }
         }
+
+        stage('AWS'){
+            agent{
+                docker{
+                    'image amazon/aws-cli'
+                }
+            }
+            steps{
+                bat 'aws --version'
+            }
+        }
         /*stage('Build'){
             steps {
                 bat 'echo node --version'
