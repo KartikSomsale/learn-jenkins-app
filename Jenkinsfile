@@ -35,14 +35,12 @@ pipeline{
         //     }
         // }
 
-        stage('Deploy'){
+        stage('Deploy Staging'){
             steps{
                 // bat 'npm install netlify-cli'
-                bat 'echo "Small Change"'
                 // bat 'node_modules/.bin/netlify --version'
-                bat 'echo "Deploying into Production, Site ID : "%NETLIFY_SITE_ID%'
-                bat 'node_modules/.bin/netlify status'
-                bat 'node_modules/.bin/netlify deploy --dir=build --prod'
+                bat 'echo "Deploying into Staging, Site ID : "%NETLIFY_SITE_ID%'
+                bat 'node_modules/.bin/netlify deploy --dir=build '
             }
         }
         stage('Approval'){
@@ -52,9 +50,12 @@ pipeline{
                 }
             }
         }
-        stage('Prod Deploy'){
+        stage('Deploy Prod'){
             steps{
-                bat 'echo "Deploying into production"'
+                // bat 'npm install netlify-cli'
+                // bat 'node_modules/.bin/netlify --version'
+                bat 'echo "Deploying into Production, Site ID : "%NETLIFY_SITE_ID%'
+                bat 'node_modules/.bin/netlify deploy --dir=build --prod'
             }
         }
     }
