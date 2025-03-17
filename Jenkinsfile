@@ -18,8 +18,8 @@ pipeline{
             steps{
                 script{
                     bat 'docker pull amazon/aws-cli'
+                    bat 'aws --version'
                 }
-                bat 'aws --version'
             }
         }
         /*stage('Build'){
