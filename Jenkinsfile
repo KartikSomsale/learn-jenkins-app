@@ -18,7 +18,6 @@ pipeline{
             steps{
                 script{
                     bat 'docker pull amazon/aws-cli'
-                    sh 'aws --version'
                 }
             }
         }
