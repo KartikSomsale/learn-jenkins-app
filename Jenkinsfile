@@ -45,7 +45,7 @@ pipeline{
                 // bat 'npm install netlify-cli'
                 // bat 'node_modules/.bin/netlify --version'
                 bat 'echo "Deploying into Staging, Site ID : "%NETLIFY_SITE_ID%'
-                bat 'node_modules/.bin/netlify deploy --dir=build --json'
+                bat 'netlify deploy --dir=build --json'
             }
         }
         stage('Approval'){
@@ -60,7 +60,7 @@ pipeline{
                 // bat 'npm install netlify-cli'
                 // bat 'node_modules/.bin/netlify --version'
                 bat 'echo "Deploying into Production, Site ID : "%NETLIFY_SITE_ID%'
-                bat 'node_modules/.bin/netlify deploy --dir=build --prod'
+                bat 'netlify deploy --dir=build --prod'
             }
         }
     }
