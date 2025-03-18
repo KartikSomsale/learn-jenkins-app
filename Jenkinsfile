@@ -9,7 +9,7 @@ pipeline{
         stage('docker'){
             steps{
                 // bat 'docker build . -t my-playwright'
-                bat 'echo "building image"'
+                bat 'echo "building images"'
             }
         }
 
