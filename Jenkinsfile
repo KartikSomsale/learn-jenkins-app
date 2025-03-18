@@ -13,7 +13,7 @@ pipeline{
             }
         }
 
-        stage('AWS1'){
+        stage('AWS'){
             agent any
             steps{
                 script{
