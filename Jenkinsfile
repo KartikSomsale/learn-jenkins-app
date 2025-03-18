@@ -14,13 +14,9 @@ pipeline{
         }
 
         stage('AWS1'){
-            agent {
-                docker{
-                    image 'amazon/aws-cli'
-                }
-            }
+            agent any
             steps{
-                
+                sh 'docker pull amazon/aws-cli'
                 withCredentials([usernamePassword(credentialsId: 'my-aws', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
                     // bat "docker run --rm -e AWS_ACCESS_KEY_ID=%AWS_ACCESS_KEY_ID% -e AWS_SECRET_ACCESS_KEY=%AWS_SECRET_ACCESS_KEY% amazon/aws-cli s3 ls"
                     // bat "docker run --rm amazon/aws-cli s3 ls"
