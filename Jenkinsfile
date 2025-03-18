@@ -19,7 +19,7 @@ pipeline{
                 script{
                     bat 'docker pull amazon/aws-cli'
                 }
-                withCredentials([usernamePassword(credentialsId: 'my-aws', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
+                withCredentials([usernamePassword(credentialsId: 'my-aws', passwordVariable: 'AWS_SECRET_ACCESS_KEY1', usernameVariable: 'AWS_ACCESS_KEY_ID1')]) {
                     bat 'aws s3 ls'
                 }
                 // bat "docker run --rm -e AWS_ACCESS_KEY_ID=%AWS_ACCESS_KEY_ID% -e AWS_SECRET_ACCESS_KEY=%AWS_SECRET_ACCESS_KEY% amazon/aws-cli s3 ls"
