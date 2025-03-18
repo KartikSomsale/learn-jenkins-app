@@ -4,8 +4,6 @@ pipeline{
     environment{
         NETLIFY_SITE_ID = "e82ef68d-6c73-4092-a1f4-0a3c3645ff04"
         NETLIFY_AUTH_TOKEN = credentials('netlify-token')
-        AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY')
-        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_KEY')
     }
     stages {
         stage('docker'){
@@ -21,7 +19,10 @@ pipeline{
                 script{
                     bat 'docker pull amazon/aws-cli'
                 }
-                bat "docker run --rm -e AWS_ACCESS_KEY_ID=%AWS_ACCESS_KEY_ID% -e AWS_SECRET_ACCESS_KEY=%AWS_SECRET_ACCESS_KEY% amazon/aws-cli s3 ls"
+                withCredentials([usernamePassword(credentialsId: 'my-aws', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
+                    bat 'aws s3 ls'
+                }
+                // bat "docker run --rm -e AWS_ACCESS_KEY_ID=%AWS_ACCESS_KEY_ID% -e AWS_SECRET_ACCESS_KEY=%AWS_SECRET_ACCESS_KEY% amazon/aws-cli s3 ls"
             }
         }
         /*stage('Build'){
